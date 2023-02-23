@@ -1,0 +1,15 @@
+https://www.switch.ch/de/network/tools/lookingglass/
+https://lookingglass.omantel.om/lg
+https://dedicatserver.ro/looking-glass-ro/lg.php
+http://lg.telenor.net/mod-perl/lg
+http://eng.nac.net/lookingglass/lg.html
+http://tieatl-server1.telx.com/lg.pl
+http://www.headoff.biz/index.php?page=lg
+https://lg.telia.net/
+http://lg.warian.net
+http://lg.rcn.net/lgform.cgi
+https://www.switch.ch/network/tools/lookingglass/
+https://www.switch.ch/network/tools/ipv6lookingglass/
+http://lg.lan.switch.ch/lg/lg.cgi
+http://lg.cern.ch/
+https://www.switch.ch/de/network/tools/lookingglass/?sbquery=TOOL

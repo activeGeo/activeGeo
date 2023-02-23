@@ -1,0 +1,13 @@
+// Template 1 模板中没有 IP 信息的网页, 也就是使用了 LookingGlass 模板的网页
+http://lg-lt-eu.bacloud.com
+185.25.50.85
+Lithuania, EU
+https://support.mark.ru/lg/
+217.14.203.153
+Izhevsk, Russia
+http://lg.telecoms.bg
+88.213.204.5
+Varna, Bulgaria, AS16154 (telecoms.bg)
+http://lg.netdirekt.com.tr/
+91.191.170.3
+Izmir
