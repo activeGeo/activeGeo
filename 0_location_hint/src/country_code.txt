@@ -1,0 +1,278 @@
+AD	andorra
+AE	united arab emirates
+AF	afghanistan
+AG	antigua and barbuda
+AI	anguilla
+AL	albania
+AM	armenia
+AO	angola
+AQ	antarctica
+AR	argentina
+AS	american samoa
+AT	austria
+AU	australia
+AW	aruba
+AX	aland islands
+AZ	azerbaijan
+BA	bosnia and herzegovina
+BB	barbados
+BD	bangladesh
+BE	belgium
+BF	burkina faso
+BG	bulgaria
+BH	bahrain
+BI	burundi
+BJ	benin
+BL	saint barthelemy
+BM	bermuda
+BN	brunei
+BO	bolivia
+BQ	bonaire, saint eustatius and saba
+BR	brazil
+BS	bahamas
+BT	bhutan
+BV	bouvet island
+BW	botswana
+BY	belarus
+BZ	belize
+CA	canada
+CC	cocos islands
+CD	democratic republic of the congo
+CF	central african republic
+CG	republic of the congo
+CH	switzerland
+CI	ivory coast
+CK	cook islands
+CL	chile
+CM	cameroon
+CN	china
+CO	colombia
+CR	costa rica
+CU	cuba
+CV	cabo verde
+CV	cape verde
+CW	curacao
+CX	christmas island
+CY	cyprus
+CZ	czechia
+DE	germany
+DJ	djibouti
+DK	denmark
+DM	dominica
+DO	dominican republic
+DZ	algeria
+EC	ecuador
+EE	estonia
+EG	egypt
+EH	western sahara
+ER	eritrea
+ES	spain
+ET	ethiopia
+FI	finland
+FJ	fiji
+FK	falkland islands
+FM	micronesia
+FO	faroe islands
+FR	france
+GA	gabon
+GB	united kingdom
+GD	grenada
+GE	georgia
+GF	french guiana
+GG	guernsey
+GH	ghana
+GI	gibraltar
+GL	greenland
+GM	gambia
+GN	guinea
+GP	guadeloupe
+GQ	equatorial guinea
+GR	greece
+GS	south georgia and the south sandwich islands
+GT	guatemala
+GU	guam
+GW	guinea bissau
+GY	guyana
+HK	hong kong
+HM	heard island and mcdonald islands
+HN	honduras
+HR	croatia
+HT	haiti
+HU	hungary
+ID	indonesia
+IE	ireland
+IL	israel
+IM	isle of man
+IN	india
+IO	british indian ocean territory
+IQ	iraq
+IR	iran
+IS	iceland
+IT	italy
+JE	jersey
+JM	jamaica
+JO	jordan
+JP	japan
+KE	kenya
+KG	kyrgyzstan
+KH	cambodia
+KI	kiribati
+KM	comoros
+KN	saint kitts and nevis
+KP	north korea
+KP	democratic people's republic of korea
+KR	south korea
+KR	republic of korea
+XK	kosovo
+KW	kuwait
+KY	cayman islands
+KZ	kazakhstan
+LA	laos
+LB	lebanon
+LC	saint lucia
+LI	liechtenstein
+LK	sri lanka
+LR	liberia
+LS	lesotho
+LT	lithuania
+LU	luxembourg
+LV	latvia
+LY	libya
+MA	morocco
+MC	monaco
+MD	moldova
+ME	montenegro
+MF	saint martin
+MG	madagascar
+MH	marshall islands
+MK	north macedonia
+MK	macedonia
+ML	mali
+MM	myanmar
+MN	mongolia
+MO	macao
+MP	northern mariana islands
+MQ	martinique
+MR	mauritania
+MS	montserrat
+MT	malta
+MU	mauritius
+MV	maldives
+MW	malawi
+MX	mexico
+MY	malaysia
+MZ	mozambique
+NA	namibia
+NC	new caledonia
+NE	niger
+NF	norfolk island
+NG	nigeria
+NI	nicaragua
+NL	netherlands
+NO	norway
+NP	nepal
+NR	nauru
+NU	niue
+NZ	new zealand
+OM	oman
+PA	panama
+PE	peru
+PF	french polynesia
+PG	papua new guinea
+PH	philippines
+PK	pakistan
+PL	poland
+PM	saint pierre and miquelon
+PN	pitcairn
+PR	puerto rico
+PS	palestinian territory
+PT	portugal
+PW	palau
+PY	paraguay
+QA	qatar
+RE	reunion
+RO	romania
+RS	serbia
+RU	russia
+RW	rwanda
+SA	saudi arabia
+SB	solomon islands
+SC	seychelles
+SD	sudan
+SS	south sudan
+SE	sweden
+SG	singapore
+SH	saint helena
+SI	slovenia
+SJ	svalbard and jan mayen
+SK	slovakia
+SL	sierra leone
+SM	san marino
+SN	senegal
+SO	somalia
+SR	suriname
+ST	sao tome and principe
+SV	el salvador
+SX	sint maarten
+SY	syria
+SZ	eswatini
+TC	turks and caicos islands
+TD	chad
+TF	french southern territories
+TG	togo
+TH	thailand
+TJ	tajikistan
+TK	tokelau
+TL	timor leste
+TM	turkmenistan
+TN	tunisia
+TO	tonga
+TR	turkey
+TT	trinidad and tobago
+TV	tuvalu
+TW	taiwan
+TZ	tanzania
+UA	ukraine
+UG	uganda
+UM	united states minor outlying islands
+US	united states
+UY	uruguay
+UZ	uzbekistan
+VA	vatican
+VC	saint vincent and the grenadines
+VE	venezuela
+VG	british virgin islands
+VI	u.s. virgin islands
+VN	vietnam
+VU	vanuatu
+WF	wallis and futuna
+WS	samoa
+YE	yemen
+YT	mayotte
+ZA	south africa
+ZM	zambia
+ZW	zimbabwe
+AF	afganistan
+BQ	bonaire
+BQ	caribbean netherlands
+BR	brasil
+CG	congo
+CS	serbia and montenegro
+CZ	czech republic
+CZ	czech
+DE	deutschland
+FO	faeroe islands
+GB	uk
+NL	netherlands antilles
+NL	deutschland
+KR	korea
+PS	palestinian
+PS	state of palestine
+PS	occupied palestinian territory
+RU	russian federation
+US	usa
+US	united states of america
+VI	virginislands us
+CI	cote d'ivoire
+GB	united kingdom of great britain and northern ireland
+TZ	united republic of tanzania

@@ -1,0 +1,183 @@
+GB.ENG.Q5	City of York	City of York	2633351
+GB.WLS.Z4	Wrexham	Wrexham	2633484
+GB.ENG.Q4	Worcestershire	Worcestershire	2633560
+GB.ENG.P9	Royal Borough of Windsor and Maidenhead	Royal Borough of Windsor and Maidenhead	2633840
+GB.ENG.P8	Wiltshire	Wiltshire	2633868
+GB.ENG.P6	West Sussex	West Sussex	2634258
+GB.SCT.W9	West Lothian	West Lothian	2634354
+GB.SCT.W8	Eilean Siar	Eilean Siar	2634428
+GB.ENG.P3	Warwickshire	Warwickshire	2634723
+GB.WLS.Z3	Vale of Glamorgan	Vale of Glamorgan	2635028
+GB.ENG.O3	Borough of Thurrock	Borough of Thurrock	2635885
+GB.ENG.N7	Surrey	Surrey	2636512
+GB.ENG.N5	Suffolk	Suffolk	2636561
+GB.SCT.W6	Stirling	Stirling	2636909
+GB.ENG.M9	Staffordshire	Staffordshire	2637141
+GB.ENG.M3	Somerset	Somerset	2637532
+GB.SCT.W3	Shetland Islands	Shetland Islands	2638010
+GB.ENG.Z9	Isles of Scilly	Isles of Scilly	2638384
+GB.ENG.L6	Shropshire	Shropshire	2638655
+GB.ENG.L4	District of Rutland	District of Rutland	2638918
+GB.SCT.W2	Renfrewshire	Renfrewshire	2639494
+GB.WLS.Y8	Sir Powys	Sir Powys	2639944
+GB.WLS.Y7	Pembrokeshire	Pembrokeshire	2640500
+GB.ENG.K2	Oxfordshire	Oxfordshire	2640726
+GB.SCT.V9	Orkney Islands	Orkney Islands	2640923
+GB.ENG.J9	Nottinghamshire	Nottinghamshire	2641169
+GB.ENG.J7	North Yorkshire	North Yorkshire	2641209
+GB.ENG.J6	Northumberland	Northumberland	2641235
+GB.ENG.J5	Borough of North Tyneside	Borough of North Tyneside	2641238
+GB.ENG.J1	Northamptonshire	Northamptonshire	2641429
+GB.ENG.I9	Norfolk	Norfolk	2641455
+GB.SCT.V6	Moray	Moray	2642240
+GB.SCT.V5	Midlothian	Midlothian	2642559
+GB.ENG.H7	Lincolnshire	Lincolnshire	2644486
+GB.ENG.H5	Leicestershire	Leicestershire	2644667
+GB.ENG.H2	Lancashire	Lancashire	2644974
+GB.ENG.G2	Isle of Wight	Isle of Wight	2646007
+GB.SCT.V4	Inverclyde	Inverclyde	2646127
+GB.SCT.V3	Highland	Highland	2646944
+GB.ENG.F8	Hertfordshire	Hertfordshire	2647043
+GB.ENG.F7	Herefordshire	Herefordshire	2647071
+GB.ENG.F2	Hampshire	Hampshire	2647554
+GB.ENG.E9	Borough of Halton	Borough of Halton	2647601
+GB.WLS.Y2	Gwynedd	Gwynedd	2647716
+GB.ENG.GLA	Greater London	Greater London	2648110
+GB.ENG.E6	Gloucestershire	Gloucestershire	2648402
+GB.ENG.E5	Gateshead	Gateshead	2648772
+GB.WLS.Y1	County of Flintshire	County of Flintshire	2649298
+GB.SCT.V1	Fife	Fife	2649469
+GB.ENG.E4	Essex	Essex	2649889
+GB.ENG.E2	East Sussex	East Sussex	2650328
+GB.ENG.E1	East Riding of Yorkshire	East Riding of Yorkshire	2650345
+GB.SCT.U6	East Lothian	East Lothian	2650386
+GB.ENG.D8	County Durham	County Durham	2650629
+GB.SCT.U2	Dumfries and Galloway	Dumfries and Galloway	2650797
+GB.ENG.D6	Dorset	Dorset	2651079
+GB.ENG.D4	Devon	Devon	2651292
+GB.ENG.D3	Derbyshire	Derbyshire	2651346
+GB.WLS.X9	Denbighshire	Denbighshire	2651385
+GB.ENG.C9	Cumbria	Cumbria	2651712
+GB.ENG.C6	Cornwall	Cornwall	2652355
+GB.SCT.U1	Clackmannanshire	Clackmannanshire	2652975
+GB.WLS.X7	Carmarthenshire	Carmarthenshire	2653753
+GB.WLS.X6	County of Ceredigion	County of Ceredigion	2653814
+GB.ENG.C3	Cambridgeshire	Cambridgeshire	2653940
+GB.ENG.B9	Buckinghamshire	Buckinghamshire	2654408
+GB.SCT.T9	The Scottish Borders	The Scottish Borders	2655192
+GB.SCT.T7	Angus	Angus	2657306
+GB.WLS.X1	Anglesey	Anglesey	2657311
+GB.SCT.T6	Aberdeenshire	Aberdeenshire	2657830
+GB.ENG.A3	Barnsley	Barnsley	3333122
+GB.ENG.A4	Bath and North East Somerset	Bath and North East Somerset	3333123
+GB.ENG.A7	City and Borough of Birmingham	City and Borough of Birmingham	3333125
+GB.ENG.A8	Blackburn with Darwen	Blackburn with Darwen	3333126
+GB.ENG.A9	Blackpool	Blackpool	3333127
+GB.ENG.B1	Borough of Bolton	Borough of Bolton	3333128
+GB.ENG.B3	Bracknell Forest	Bracknell Forest	3333130
+GB.ENG.B4	Bradford	Bradford	3333131
+GB.ENG.B6	Brighton and Hove	Brighton and Hove	3333133
+GB.ENG.B7	City of Bristol	City of Bristol	3333134
+GB.ENG.C1	Borough of Bury	Borough of Bury	3333136
+GB.ENG.C2	Calderdale	Calderdale	3333137
+GB.ENG.C7	Coventry	Coventry	3333139
+GB.ENG.D1	Darlington	Darlington	3333141
+GB.ENG.D2	Derby	Derby	3333142
+GB.ENG.D5	Doncaster	Doncaster	3333143
+GB.ENG.D7	Dudley	Dudley	3333144
+GB.ENG.F5	Hartlepool	Hartlepool	3333152
+GB.ENG.G5	Kent	Kent	3333158
+GB.ENG.G6	City of Kingston upon Hull	City of Kingston upon Hull	3333159
+GB.ENG.G8	Kirklees	Kirklees	3333161
+GB.ENG.G9	Knowsley	Knowsley	3333162
+GB.ENG.H3	City and Borough of Leeds	City and Borough of Leeds	3333164
+GB.ENG.H4	City of Leicester	City of Leicester	3333165
+GB.ENG.H8	Liverpool	Liverpool	3333167
+GB.ENG.I1	Luton	Luton	3333168
+GB.ENG.I2	Manchester	Manchester	3333169
+GB.ENG.I3	Medway	Medway	3333170
+GB.ENG.I5	Middlesbrough	Middlesbrough	3333172
+GB.ENG.I6	Milton Keynes	Milton Keynes	3333173
+GB.ENG.I7	Newcastle upon Tyne	Newcastle upon Tyne	3333174
+GB.ENG.J2	North East Lincolnshire	North East Lincolnshire	3333175
+GB.ENG.J3	North Lincolnshire	North Lincolnshire	3333176
+GB.ENG.J4	North Somerset	North Somerset	3333177
+GB.ENG.J8	Nottingham	Nottingham	3333178
+GB.ENG.K1	Borough of Oldham	Borough of Oldham	3333179
+GB.ENG.K3	Peterborough	Peterborough	3333180
+GB.ENG.K4	Plymouth	Plymouth	3333181
+GB.ENG.K6	Portsmouth	Portsmouth	3333183
+GB.ENG.K7	Reading	Reading	3333184
+GB.ENG.K9	Redcar and Cleveland	Redcar and Cleveland	3333186
+GB.ENG.L2	Borough of Rochdale	Borough of Rochdale	3333188
+GB.ENG.L3	Rotherham	Rotherham	3333189
+GB.ENG.L5	City and Borough of Salford	City and Borough of Salford	3333190
+GB.ENG.L7	Sandwell	Sandwell	3333191
+GB.ENG.L8	Sefton	Sefton	3333192
+GB.ENG.L9	Sheffield	Sheffield	3333193
+GB.ENG.M1	Slough	Slough	3333194
+GB.ENG.M2	Solihull	Solihull	3333195
+GB.ENG.M4	Southampton	Southampton	3333196
+GB.ENG.M5	Southend-on-Sea	Southend-on-Sea	3333197
+GB.ENG.M6	South Gloucestershire	South Gloucestershire	3333198
+GB.ENG.M7	South Tyneside	South Tyneside	3333199
+GB.ENG.N1	St. Helens	St. Helens	3333201
+GB.ENG.N2	Borough of Stockport	Borough of Stockport	3333202
+GB.ENG.N3	Stockton-on-Tees	Stockton-on-Tees	3333203
+GB.ENG.N4	Stoke-on-Trent	Stoke-on-Trent	3333204
+GB.ENG.N6	Sunderland	Sunderland	3333205
+GB.ENG.N9	Borough of Swindon	Borough of Swindon	3333207
+GB.ENG.O1	Borough of Tameside	Borough of Tameside	3333208
+GB.ENG.O2	Telford and Wrekin	Telford and Wrekin	3333209
+GB.ENG.O4	Borough of Torbay	Borough of Torbay	3333210
+GB.ENG.O6	Trafford	Trafford	3333211
+GB.ENG.O7	City and Borough of Wakefield	City and Borough of Wakefield	3333212
+GB.ENG.O8	Walsall	Walsall	3333213
+GB.ENG.P2	Warrington	Warrington	3333216
+GB.ENG.P4	West Berkshire	West Berkshire	3333217
+GB.ENG.P7	Borough of Wigan	Borough of Wigan	3333219
+GB.ENG.Q1	Metropolitan Borough of Wirral	Metropolitan Borough of Wirral	3333220
+GB.ENG.Q2	Wokingham	Wokingham	3333221
+GB.ENG.Q3	Wolverhampton	Wolverhampton	3333222
+GB.NIR.N09000003	City of Belfast	City of Belfast	3333223
+GB.SCT.T5	Aberdeen City	Aberdeen City	3333224
+GB.SCT.U3	Dundee City	Dundee City	3333225
+GB.SCT.U4	East Ayrshire	East Ayrshire	3333226
+GB.SCT.U5	East Dunbartonshire	East Dunbartonshire	3333227
+GB.SCT.U7	East Renfrewshire	East Renfrewshire	3333228
+GB.SCT.U8	City of Edinburgh	City of Edinburgh	3333229
+GB.SCT.U9	Falkirk	Falkirk	3333230
+GB.SCT.V2	Glasgow City	Glasgow City	3333231
+GB.SCT.V7	North Ayrshire	North Ayrshire	3333232
+GB.SCT.V8	North Lanarkshire	North Lanarkshire	3333233
+GB.SCT.W1	Perth and Kinross	Perth and Kinross	3333234
+GB.SCT.W4	South Ayrshire	South Ayrshire	3333235
+GB.SCT.W5	South Lanarkshire	South Lanarkshire	3333236
+GB.SCT.W7	West Dunbartonshire	West Dunbartonshire	3333237
+GB.WLS.X2	Blaenau Gwent	Blaenau Gwent	3333238
+GB.WLS.X3	Bridgend county borough	Bridgend county borough	3333239
+GB.WLS.X4	Caerphilly County Borough	Caerphilly County Borough	3333240
+GB.WLS.X5	Cardiff	Cardiff	3333241
+GB.WLS.X8	Conwy	Conwy	3333242
+GB.WLS.Y3	Merthyr Tydfil County Borough	Merthyr Tydfil County Borough	3333243
+GB.WLS.Y4	Monmouthshire	Monmouthshire	3333244
+GB.WLS.Y5	Neath Port Talbot	Neath Port Talbot	3333245
+GB.WLS.Y6	Newport	Newport	3333246
+GB.WLS.Y9	Rhondda Cynon Taf	Rhondda Cynon Taf	3333247
+GB.WLS.Z1	City and County of Swansea	City and County of Swansea	3333248
+GB.WLS.Z2	Torfaen County Borough	Torfaen County Borough	3333249
+GB.SCT.T8	Argyll and Bute	Argyll and Bute	6457407
+GB.ENG.Z5	Bedford	Bedford	7290534
+GB.ENG.Z6	Central Bedfordshire	Central Bedfordshire	7290535
+GB.ENG.Z7	Cheshire East	Cheshire East	7290536
+GB.ENG.Z8	Cheshire West and Chester	Cheshire West and Chester	7290537
+GB.NIR.N09000009	Mid Ulster	Mid Ulster	11353068
+GB.NIR.N09000001	Antrim and Newtownabbey	Antrim and Newtownabbey	11353069
+GB.NIR.N09000004	Causeway Coast and Glens	Causeway Coast and Glens	11353070
+GB.NIR.N09000006	Fermanagh and Omagh	Fermanagh and Omagh	11353071
+GB.NIR.N09000007	Lisburn and Castlereagh	Lisburn and Castlereagh	11353072
+GB.NIR.N09000005	Derry City and Strabane	Derry City and Strabane	11353073
+GB.NIR.N09000011	Ards and North Down	Ards and North Down	11353074
+GB.NIR.N09000002	Armagh City Banbridge and Craigavon	Armagh City Banbridge and Craigavon	11353076
+GB.NIR.N09000010	Newry Mourne and Down	Newry Mourne and Down	11353077
+GB.NIR.N09000008	Mid and East Antrim	Mid and East Antrim	11353078
