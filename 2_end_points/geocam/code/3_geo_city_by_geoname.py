@@ -9,8 +9,8 @@ import csv
 import json
 import pickle
 
-GEO_BIN = os.path.expanduser('~/geoinfo/bin')
-dict_country_code = pickle.load(open(f'{GEO_BIN}/dict_country_code.bin', 'rb'))
+GEO_BIN = os.path.expanduser('../../../0_location_hint/pickle_bin')
+dict_country_code = pickle.load(open(f'{GEO_BIN}/dict_countryname_code.bin', 'rb'))
 dict_city_by_country = pickle.load(open(f'{GEO_BIN}/dict_city_by_country.bin', 'rb'))
 
 file_list = [
@@ -34,7 +34,7 @@ for this_f in file_list:
                 raw_text = row[1][15:] if row[1].startswith('Live') else row[1]
                 city_name = raw_text.lower().replace('-', '').replace(' ', '')
                 if city_name in dict_city_by_country[code]:
-                    city_info = dict_city_by_country[code][city_name][0]
+                    city_info = dict_city_by_country[code][city_name]
                     one_result = {
                         'ip': row[0],
                         'city': city_name,
