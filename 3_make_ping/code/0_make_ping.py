@@ -125,12 +125,12 @@ def request_one_pair(one_pair):
     server_ip, client_ip = one_pair
 
     server_info = ok_server_dict[server_ip]
-    api_type  = ok_server_dict[server_ip]['api']
+    api_type  = ok_server_dict[server_ip]['api_type']
 
     req = None
     try:
         make_api_func = api_func_list[api_type]
-        raw_text = make_api_func(server_info['website'], client_ip, server_info['items'])
+        raw_text = make_api_func(server_info['website'], client_ip, server_info['geohint'])
         [split_word, time_word] = re.findall(TIME_REGREX, raw_text)[0]
         result = [float(x.strip()) for x in time_word.split(split_word)]
         return result if len(result) else None

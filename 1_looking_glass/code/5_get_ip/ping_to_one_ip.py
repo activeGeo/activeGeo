@@ -43,7 +43,6 @@ def test_api_1(website, client_ip='8.8.8.8', items=None):
         ping_str += '?query=ping&protocol=IPv4&addr={}&router='
         ping_str += items[1].replace(' ', '+')
         req = requests_get(ping_str.format(client_ip))
-        time_str_list = [ s for s in req.text.split() if 'time' in s ]
         return req.text
     except:
         pass
