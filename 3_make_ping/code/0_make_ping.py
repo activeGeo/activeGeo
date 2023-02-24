@@ -6,13 +6,14 @@ import requests
 import concurrent.futures
 from functools import partial
 
-ok_server_dict = pickle.load(open('../src/ok_server_dict.bin', 'rb'))
-ok_client_dict = pickle.load(open('../src/ok_client_dict.bin', 'rb'))
-
 # Parameters
+SRC_DIR = '../'
+DST_DIR = './result'
 TASK_NUM = 30 * 2
 
-DST_DIR = './result'
+ok_server_dict = pickle.load(open(f'{SRC_DIR}/ok_server_dict.bin', 'rb'))
+ok_client_dict = pickle.load(open(f'{SRC_DIR}/ok_client_dict.bin', 'rb'))
+
 os.system(f'mkdir -p {DST_DIR}')
 
 requests_get = partial(requests.get, timeout=10, verify=False)
