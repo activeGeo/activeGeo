@@ -1,6 +1,6 @@
 In this directory, we use our collected Looking Glasses to some end points.
 
-1. This directory needs two source files, which put in folder `src`: `ok_server_dict.bin` and `ok_client_dict.bin`.
+1. This directory needs two source files, which put in folder `src`: `dict_server_info.bin` and `dict_client_info.bin`.
 Both of these two files have the following form:
 ```
 { ip1: {k11:v11, k12:v12, ..}, ip2: {k21:v21, k22:v22, ..}, ...  }
