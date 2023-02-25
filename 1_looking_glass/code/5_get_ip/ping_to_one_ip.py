@@ -3,17 +3,17 @@ import time
 import pickle
 import requests
 from functools import partial
+import concurrent.futures
 
  
 LG_DIR = '../../'
 FORMER_RESULT_DIR = '../4_filter_by_api/result'
 
-MACHINE_IP = '198.13.38.108'
+# MACHINE_IP = '173.199.123.79'
+MACHINE_IPS = ['45.32.149.108', '173.199.123.79']
 
-# 1. use api to geolocate successfully
-# 2. cannot use api
-DST_FILES_DIR = f'{LG_DIR}/pickle_bin/'
-os.system(f'mkdir -p {DST_FILES_DIR}')
+DST_DIR = f'./result/'
+os.system(f'mkdir -p {DST_DIR}')
 
 requests_get = partial(requests.get, timeout=15, verify=False)
 requests_post = partial(requests.post, timeout=15, verify=False)
@@ -115,13 +115,24 @@ list_test_api = [
 ]
 
 input_list = pickle.load(open(f'{FORMER_RESULT_DIR}/list_good_routers.bin', 'rb'))
-RECORD_FILE = open('./send.txt', 'w')
 print('src: ', len(input_list))
-for idx, one_router in enumerate(input_list):
-    print(idx)
-    time.sleep(7)
-    begin_time = str(time.time())
-    test_api = list_test_api[one_router['api_type']]
-    test_api(one_router['website'], client_ip=MACHINE_IP, items=one_router['geohint'])
+
+def ping_to_one_machine(m_idx);
+    os.system(f'mkdir -p {DST_DIR}/{m_idx}_record')
+    TIME_FILE = open(f'{DST_DIR}/{m_idx}_send.txt', 'w')
+    for idx, one_router in enumerate(input_list):
+        begin_time = str(time.time())
+        TIME_FILE.writelines(begin_time + '\n')
+        test_api = list_test_api[one_router['api_type']]
+        result = test_api(one_router['website'], client_ip=MACHINE_IPS[m_idx], items=one_router['geohint'])
+        with open(f'{DST_DIR}/{m_idx}_record/{idx}.txt', 'w') as RECORD_FILE:
+            RECORD_FILE.writelines(result)
+
     end_time = str(time.time())
-    RECORD_FILE.writelines('\t'.join([begin_time, end_time, str(idx)]) + '\n')
+    TIME_FILE.writelines(end_time + '\n')
+
+TASK_NUM = 5
+with concurrent.futures.ProcessPoolExecutor(max_workers=TASK_NUM) as executor:
+    futures = [executor.submit(ping_to_one_machine, m_idx) for m_idx in range(len(MACHINE_IPS))]
+    for future in concurrent.futures.as_completed(futures):
+        future.result()

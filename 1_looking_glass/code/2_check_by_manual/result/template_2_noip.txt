@@ -1,5 +1,0 @@
-// Template 2 中的 bad 网页, 也就是显示了 network information 但是没有合法信息的网页
-// 那些显示了地理信息, 但是没有对应 IP 的网页
-http://lg.jlm.net.id    
-Jarkata
-150.107.140.242
