@@ -60,7 +60,7 @@ for m_idx in range(0, len(MACHINE_IPS)):
 
     result_each_time.append(ip_count_list)
 
-ok_server_dict = {}
+dict_lg_info = {}
 for lg_idx in range(LG_NUM):
     set_list = []
     for m_idx in range(len(MACHINE_IPS)):
@@ -70,8 +70,8 @@ for lg_idx in range(LG_NUM):
     print(candiates)
     print('----------------------')
     if len(candiates) == 1:
-        ok_server_dict[candiates[0]] = LG_LIST[lg_idx]
+        dict_lg_info[candiates[0]] = LG_LIST[lg_idx]
 
-print('dst: ', len(ok_server_dict))
+print('dst: ', len(dict_lg_info))
 
-pickle.dump(ok_server_dict, open(f'{DST_DIR}/ok_server_dict.bin', 'wb'))
+pickle.dump(dict_lg_info, open(f'{DST_DIR}/dict_lg_info.bin', 'wb'))
