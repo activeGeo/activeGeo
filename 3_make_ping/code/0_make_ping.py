@@ -7,12 +7,13 @@ import concurrent.futures
 from functools import partial
 
 # Parameters
-SRC_DIR = '../'
+SRC_DIR = '../src'
 DST_DIR = './result'
 TASK_NUM = 30 * 2
 
 ok_server_dict = pickle.load(open(f'{SRC_DIR}/ok_server_dict.bin', 'rb'))
 ok_client_dict = pickle.load(open(f'{SRC_DIR}/ok_client_dict.bin', 'rb'))
+print('client: ', len(ok_client_dict))
 
 os.system(f'mkdir -p {DST_DIR}')
 
@@ -145,9 +146,9 @@ for one_pair in pairs:
     one_task = executor.submit(request_one_pair, one_pair)
     tasks_parm[one_task] = one_pair
 
-for one_task in concurrent.futures.as_completed(tasks.keys()):
+for one_task in concurrent.futures.as_completed(tasks_parm.keys()):
     one_pair = tasks_parm[one_task]
     with open(f'{DST_DIR}/{one_pair[0]}.txt', 'a') as srcfile:
-        rtt_list = future.result()
+        rtt_list = one_task.result()
         if rtt_list:
-            srcfile.writelines(one_pair[1] + '\t' + rtt_list + '\n')
+            srcfile.writelines(one_pair[1] + '\t' + str(rtt_list) + '\n')
