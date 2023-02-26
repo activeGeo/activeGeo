@@ -17,7 +17,6 @@ clientserver_rtt_dict = pickle.load(open(f'{SRC_DIR}/clientserver_rtt_dict.bin',
 '''
 dict_server_coor = {}
 for server_ip in dict_server_info:
-    print(dict_server_info[server_ip])
     dict_server_coor[server_ip] = dict_server_info[server_ip]['coordinate']
 
 dict_client_coor = {}
