@@ -15,8 +15,8 @@ ITDK_FILE_NUM = len(os.listdir(ITDK_DIR))
 DST_DIR = '../../pickle_bin'
 
 dict_name_binpath = {
-    'caida': '../geo_by_caida/result/',
-    'myself': '../geo_by_myself/result/',
+    'caida': '../0_geo_by_caida/result/',
+    'myself': '../0_geo_by_myself/result/',
 }
 
 def format_name(name):
