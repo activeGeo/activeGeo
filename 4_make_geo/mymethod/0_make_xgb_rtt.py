@@ -2,16 +2,14 @@ import os
 import pickle
 import xgboost as xgb
 
-BIN_DIR = os.path.expanduser(f'~/ipgeo/pickle_bin/{TYPE}')
+BIN_DIR = os.path.expanduser(f'../pickle_bin')
 
-ok_server_dict = pickle.load(open(f'{BIN_DIR}/ok_server_dict.bin', 'rb'))
-ok_client_dict = pickle.load(open(f'{BIN_DIR}/ok_client_dict.bin', 'rb'))
+dict_server_info = pickle.load(open(f'{BIN_DIR}/dict_server_info.bin', 'rb'))
 
-ok_train_set = pickle.load(open(f'{BIN_DIR}/ok_train_set.bin', 'rb'))
-ok_test_set  = pickle.load(open(f'{BIN_DIR}/ok_test_set.bin', 'rb'))
+ok_train_list = pickle.load(open(f'{BIN_DIR}/ok_train_list.bin', 'rb'))
+ok_test_list  = pickle.load(open(f'{BIN_DIR}/ok_test_list.bin', 'rb'))
 
-nan_rtt_dict = pickle.load(open(f'{BIN_DIR}/nan_rtt_dict.bin', 'rb'))
-print('Success: loading pickle...')
+dict_nan_rtt = pickle.load(open(f'{BIN_DIR}/dict_nan_rtt.bin', 'rb'))
 
 
 import numpy as np
@@ -19,19 +17,19 @@ import pandas as pd
 
 # 训练数据
 train_rtt = []
-for client_ip in ok_train_set:
+for client_ip in ok_train_list:
     now_input = []
-    for server_ip in ok_server_dict:
-        now_input.append(nan_rtt_dict[client_ip][server_ip])
+    for server_ip in dict_server_info:
+        now_input.append(dict_nan_rtt[client_ip][server_ip])
     train_rtt.append(now_input)
 train_rtt = pd.DataFrame(train_rtt)
 
 # 测试数据
 test_rtt = []
-for client_ip in ok_test_set:
+for client_ip in ok_test_list:
     now_input = []
-    for server_ip in ok_server_dict:
-        now_input.append(nan_rtt_dict[client_ip][server_ip])
+    for server_ip in dict_server_info:
+        now_input.append(dict_nan_rtt[client_ip][server_ip])
     test_rtt.append(now_input)
 test_rtt = pd.DataFrame(test_rtt)
 
@@ -87,10 +85,10 @@ for i in range(0, train_rtt.shape[1]):
 
     train_rtt.iloc[ytest.index, i] = ypredict
 
-for i, client_ip in enumerate(ok_train_set):
+for i, client_ip in enumerate(ok_train_list):
     if not i % 5000: print(i)
     xgb_rtt_dict[client_ip] = {}
-    for j, server_ip in enumerate(ok_server_dict):
+    for j, server_ip in enumerate(dict_server_info):
         xgb_rtt_dict[client_ip][server_ip] = train_rtt.loc[i, j]
 
 
@@ -105,10 +103,10 @@ for i in range(0, test_rtt.shape[1]):
 
     test_rtt.iloc[ytest.index, i] = ypredict
 
-for i, client_ip in enumerate(ok_test_set):
+for i, client_ip in enumerate(ok_test_list):
     if not i % 5000: print(i)
     xgb_rtt_dict[client_ip] = {}
-    for j, server_ip in enumerate(ok_server_dict):
+    for j, server_ip in enumerate(dict_server_info):
         xgb_rtt_dict[client_ip][server_ip] = test_rtt.loc[i, j]
 
 pickle.dump(xgb_rtt_dict, open(f'{BIN_DIR}/xgb_rtt_dict.bin', 'wb'))

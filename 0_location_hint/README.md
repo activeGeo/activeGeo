@@ -17,4 +17,4 @@ This directory is used to build our Location Hint Dictionary.
 | country_info.txt    | This file contains some information of each country, which is from https://www.geonames.org/. |
 | country_region.txt  | This file contains the regional information of each country, which is from https://github.com/lukes/ISO-3166-Countries-with-Regional-Codes. |
 | country_rir.txt     | This file contains the rir information of each country, which is from https://www.nro.net/list-of-country-codes-ordered-by-rir/. |
-| UNLOCODE_{1-3}.txt  | This file contains the information of UN/LOCODE, which is from https://www.nro.net/list-of-country-codes-ordered-by-rir/. |
+| UNLOCODE_{1-3}.txt  | This file contains the information of UN/LOCODE, which is from https://unece.org/trade/cefact/unlocode-code-list-country-and-territory. |

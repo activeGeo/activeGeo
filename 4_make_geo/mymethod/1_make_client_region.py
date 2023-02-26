@@ -4,19 +4,16 @@ import os
 import pickle
 from collections import defaultdict
 
-TYPE = 'test01'
-
-BIN_DIR = os.path.expanduser(f'~/ipgeo/pickle_bin/{TYPE}')
-GEOINFO_DIR = os.path.expanduser(f'~/geoinfo/bin')
+BIN_DIR = os.path.expanduser(f'../pickle_bin')
 
 print('Loading pickle ...')
 
-ok_server_dict    = pickle.load(open(f'{BIN_DIR}/ok_server_dict.bin', 'rb'))
-ok_client_dict    = pickle.load(open(f'{BIN_DIR}/ok_client_dict.bin', 'rb'))
-ok_train_set = pickle.load(open(f'{BIN_DIR}/ok_train_set.bin', 'rb'))
-ok_test_set  = pickle.load(open(f'{BIN_DIR}/ok_test_set.bin', 'rb'))
+dict_client_info = pickle.load(open(f'{BIN_DIR}/dict_client_info.bin', 'rb'))
+ok_train_list = pickle.load(open(f'{BIN_DIR}/ok_train_list.bin', 'rb'))
+ok_test_list  = pickle.load(open(f'{BIN_DIR}/ok_test_list.bin', 'rb'))
 
-dict_country_region = pickle.load(open(f'{GEOINFO_DIR}/dict_country_region.bin', 'rb'))
+dict_countrycode_info = pickle.load(open(f'{BIN_DIR}/dict_countrycode_info.bin', 'rb'))
+
 print('Success: loading pickle')
 print()
 print('Generating region information ...')
@@ -25,8 +22,8 @@ print('Generating region information ...')
 country_class_dict = dict_country_region
 
 region_set = set()
-for client_ip in (ok_train_set | ok_test_set):
-    country_code = ok_client_dict[client_ip]['country_code'].lower()
+for client_ip in (ok_train_list + ok_test_list):
+    country_code = dict_client_info[client_ip]['country_code'].lower()
     region_name = country_class_dict[country_code]
     region_set.add(region_name)
 
@@ -38,8 +35,8 @@ pickle.dump(region_idx_dict, open(f'{BIN_DIR}/region_idx_dict.bin', 'wb'))
 
 
 client_region_dict = dict()
-for client_ip in (ok_train_set | ok_test_set):
-    country_code = ok_client_dict[client_ip]['country_code'].lower()
+for client_ip in (ok_train_list + ok_test_list):
+    country_code = dict_client_info[client_ip]['country_code'].lower()
     region_name = country_class_dict[country_code]
 
     client_region_dict[client_ip] = [ 0 for i in region_idx_dict ]

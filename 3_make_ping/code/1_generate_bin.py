@@ -11,7 +11,7 @@ TASK_NUM = 30 * 2
 ok_server_dict = pickle.load(open(f'{SRC_DIR}/ok_server_dict.bin', 'rb'))
 ok_client_dict = pickle.load(open(f'{SRC_DIR}/ok_client_dict.bin', 'rb'))
 
-serverclient_rtt_dict = {k:{} for k in ok_server_dict}
+dict_serverclient_rtt = {k:{} for k in ok_server_dict}
 server_ips = [x[0:-4] for x in os.listdir(DATA_DIR)]
 for server_ip in server_ips:
     with open(f'{DATA_DIR}/{server_ip}.txt', 'r') as srcfile:
@@ -21,14 +21,14 @@ for server_ip in server_ips:
 
             rtts = eval(info[1])
             rtt  = min(rtts[:-1]) if len(rtts) > 1 else rtts[0]
-            serverclient_rtt_dict[server_ip][info[0]] = rtt
+            dict_serverclient_rtt[server_ip][info[0]] = rtt
 
-pickle.dump(serverclient_rtt_dict, open(f'{DST_DIR}/serverclient_rtt_dict.bin', 'wb'))
+pickle.dump(dict_serverclient_rtt, open(f'{DST_DIR}/dict_serverclient_rtt.bin', 'wb'))
 
-clientserver_rtt_dict = {k:{} for k in ok_client_dict}
-for server_ip in serverclient_rtt_dict:
-    for client_ip in serverclient_rtt_dict[server_ip]:
-        info = serverclient_rtt_dict[server_ip][client_ip]
-        clientserver_rtt_dict[client_ip][server_ip] = info
+dict_clientserver_rtt = {k:{} for k in ok_client_dict}
+for server_ip in dict_serverclient_rtt:
+    for client_ip in dict_serverclient_rtt[server_ip]:
+        info = dict_serverclient_rtt[server_ip][client_ip]
+        dict_clientserver_rtt[client_ip][server_ip] = info
 
-pickle.dump(clientserver_rtt_dict, open(f'{DST_DIR}/clientserver_rtt_dict.bin', 'wb'))
+pickle.dump(dict_clientserver_rtt, open(f'{DST_DIR}/dict_clientserver_rtt.bin', 'wb'))
