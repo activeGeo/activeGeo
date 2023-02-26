@@ -113,7 +113,7 @@ for idx in range(1, TEMPLATE_NUM+1):
             list_bad_routers.append(one_router)
         else:
             city_info = result[1][0]
-            one_router['coordiante'] = city_info[0]
+            one_router['coordinate'] = city_info[0]
             one_router['country_code'] = city_info[1]
             one_router['city'] = city_info[3]
             list_good_routers.append(one_router)
