@@ -9,7 +9,7 @@ import concurrent.futures
 from collections import defaultdict
 
 ITDK_DIR = '../../src/itdk_data'
-ITDK_FILE = ITDK_DIR + '/kapar-midar-iff.nodes_{}'
+ITDK_FILE = ITDK_DIR + '/data-{}.txt'
 ITDK_FILE_NUM = len(os.listdir(ITDK_DIR))
 
 DST_DIR = '../../pickle_bin'

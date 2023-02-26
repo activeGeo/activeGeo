@@ -12,7 +12,7 @@ RDNS_PROJ_DIR = '../../'
 
 RDNS_FILES = RDNS_PROJ_DIR + '/src/rapid7_data/data-{}.txt'
 RDNS_FILES_NUM = len(os.listdir(RDNS_PROJ_DIR + '/src/rapid7_data'))
-GEOHINT_FILE = RDNS_PROJ_DIR + '/src/202103-midar-iff.geo-re.json'
+GEOHINT_FILE = RDNS_PROJ_DIR + '/src/georule_by_caida.json'
 
 PPV_THRESHOLD = 0.9
 DST_DIR = './result/dict_prefix_info'
