@@ -73,19 +73,3 @@ def make_predict(
     # pickle.dump(rfc, open(f'{DST_DIR}/RF2.bin', 'wb'))
     # pickle.dump(predict_coor, open(f'{DST_DIR}/predict_coor.bin', 'wb'))
     return (dict_predict_region, dict_predict_coor)
-
-dict_server_info = pickle.load(open('../pickle_bin/dict_server_info.bin', 'rb'))
-dict_client_info = pickle.load(open('../pickle_bin/dict_client_info.bin', 'rb'))
-ok_train_list = pickle.load(open('../pickle_bin/ok_train_list.bin', 'rb'))
-ok_test_list = pickle.load(open('../pickle_bin/ok_test_list.bin', 'rb'))
-dict_clientserver_rtt = pickle.load(open('../pickle_bin/dict_rtt_xgb.bin', 'rb'))
-dict_client_region = pickle.load(open('../pickle_bin/dict_client_region_subregion.bin', 'rb'))
-
-make_predict(
-    dict_server_info,
-    dict_client_info,
-    ok_train_list,
-    ok_test_list,
-    dict_clientserver_rtt,
-    dict_client_region,
-)
