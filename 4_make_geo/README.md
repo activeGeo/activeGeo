@@ -6,3 +6,5 @@ Requirement: put some files in `pickle_bin`:
 - `dict_client_info.bin` in `3_make_ping`
 - `dict_serverclient_rtt.bin` in `3_make_ping`
 - `dict_clientserver_rtt.bin` in `3_make_ping`
+
+We have put the above files in the directory as a demo, and due to the file size, only 10,000 endpoints are used.
