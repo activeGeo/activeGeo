@@ -5,12 +5,10 @@ In this directory, we use RDNS hostname to infer the locations of some IPs.
 1. `itdk_data`
 This directory contains the `midar-iff.nodes.bz2` file, which is published by CAIDA. 
 Here is the example: https://publicdata.caida.org/datasets/topology/ark/ipv4/itdk/2021-03/ .
-
 We split this file into a number of smaller files named in the format `data-{i}.txt` where `i` is a number.
 
 2. `rdns_data`
 This directory contains the RDNS hostname file. We get it from Rapid7 RDNS. 
-
 We also split this file into a number of smaller files named in the format `data-{i}.txt` where `i` is a number.
 
 3. `georule_by_caida.json`
