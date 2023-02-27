@@ -1,66 +1,85 @@
 import os
 import pickle
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.ensemble import RandomForestRegressor
+import math
+import geopy.distance
+from geo_by_myself import make_predict
 
-# def coor_to_nv(coor):
-#     (lat, lon) = coor
-#     lat = lat / 180 * math.pi
-#     lon = lon / 180 * math.pi
+def coor_to_nv(coor):
+    (lat, lon) = coor
+    lat = lat / 180 * math.pi
+    lon = lon / 180 * math.pi
 
-#     cos_lat = math.cos(lat)
-#     cos_lon = math.cos(lon)
-#     sin_lat = math.sin(lat)
-#     sin_lon = math.sin(lon)
-#     return [cos_lat*cos_lon, cos_lat*sin_lon, sin_lat]
+    cos_lat = math.cos(lat)
+    cos_lon = math.cos(lon)
+    sin_lat = math.sin(lat)
+    sin_lon = math.sin(lon)
+    return [cos_lat*cos_lon, cos_lat*sin_lon, sin_lat]
 
-# def nv_to_coor(nvector):
-#     [n0, n1, n2] = nvector
-#     return (math.asin(n2) * 180 / math.pi, math.atan2(n1, n0) * 180 / math.pi)
+def nv_to_coor(nvector):
+    [n0, n1, n2] = nvector
+    return (math.asin(n2) * 180 / math.pi, math.atan2(n1, n0) * 180 / math.pi)
 
-# # 制作数据
-# def make_data_1(clients):
-#     input_list, output_list = [], []
-#     for client_ip in clients:
-#         client_coor = dict_client_info[client_ip]['coordinate']
-#         output_list.append(coor_to_nv(client_coor))
+dict_server_info = pickle.load(open('../pickle_bin/dict_server_info.bin', 'rb'))
+dict_client_info = pickle.load(open('../pickle_bin/dict_client_info.bin', 'rb'))
+ok_train_list = pickle.load(open('../pickle_bin/ok_train_list.bin', 'rb'))
+ok_test_list = pickle.load(open('../pickle_bin/ok_test_list.bin', 'rb'))
+dict_clientserver_rtt = pickle.load(open('../pickle_bin/dict_rtt_xgb.bin', 'rb'))
+dict_client_region = pickle.load(open('../pickle_bin/dict_client_region_subregion.bin', 'rb'))
 
-#         now_input = []    
-#         now_input.extend(dict_client_region[client_ip])
-#         for server_ip in dict_server_info:
-#             now_input.append(dict_clientserver_rtt[client_ip][server_ip])
-#         input_list.append(now_input)
-#     return (input_list, output_list)
+new_dict_client_info = {}
+for client_ip in dict_client_info:
+    new_dict_client_info[client_ip] = {}
+    coor = dict_client_info[client_ip]['coordinate']
+    new_dict_client_info[client_ip]['coordinate'] = coor_to_nv(coor)
 
-# (train_data, train_label) = make_data_1(ok_train_list)
-# (test_data, test_label) = make_data_1(ok_test_list)
+stage_2, stage_3 = make_predict(
+    dict_server_info,
+    dict_client_info,
+    ok_train_list,
+    ok_test_list,
+    dict_clientserver_rtt,
+    dict_client_region,
+    loss = 'mse'
+)
 
-# rfc = RandomForestRegressor(n_estimators=300, n_jobs=N_JOBS, criterion='nvector2')
-# rfc = rfc.fit(train_data, train_label)
-# predict_coor = rfc.predict(test_data)
-# dict_predict_coor = {}
-# for ip_idx, test_ip in enumerate(ok_test_list):
-#     dict_predict_coor[test_ip] = predict_coor[ip_idx].tolist()
+err_dis = 0
+for test_ip in ok_test_list:
+    good_coor = dict_client_info[test_ip]['coordinate']
+    test_coor = stage_3[test_ip]
+    err_dis += geopy.distance.geodesic(good_coor, test_coor).km
+print(err_dis / len(ok_test_list))
 
+# stage_2, stage_3 = make_predict(
+#     dict_server_info,
+#     dict_client_info,
+#     ok_train_list,
+#     ok_test_list,
+#     dict_clientserver_rtt,
+#     dict_client_region,
+#     loss = 'latlon'
+# )
 
-def make_data_2(clients):
-    input_list, output_list = [], []
-    for client_ip in clients:
-        output_list.append(dict_client_info[client_ip]['coordinate'])
+# err_dis = 0
+# for test_ip in ok_test_list:
+#     good_coor = dict_client_info[test_ip]['coordinate']
+#     test_coor = stage_3[test_ip]
+#     err_dis += geopy.distance.geodesic(good_coor, test_coor).km
+# print(err_dis / len(ok_test_list))
 
-        now_input = []    
-        now_input.extend(dict_client_region[client_ip])
-        for server_ip in dict_server_info:
-            now_input.append(dict_clientserver_rtt[client_ip][server_ip])
-        input_list.append(now_input)
-    return (input_list, output_list)
+stage_2, stage_3 = make_predict(
+    dict_server_info,
+    new_dict_client_info,
+    ok_train_list,
+    ok_test_list,
+    dict_clientserver_rtt,
+    dict_client_region,
+    loss = 'nvector'
+)
 
-(train_data, train_label) = make_data_2(ok_train_list)
-(test_data, test_label) = make_data_2(ok_test_list)
-
-rfc = RandomForestRegressor(n_estimators=300, n_jobs=N_JOBS, criterion='latlon')
-rfc = rfc.fit(train_data, train_label)
-predict_coor = rfc.predict(test_data)
-dict_predict_coor = {}
-for ip_idx, test_ip in enumerate(ok_test_list):
-    dict_predict_coor[test_ip] = predict_coor[ip_idx].tolist()
+err_dis = 0
+for test_ip in ok_test_list:
+    good_coor = dict_client_info[test_ip]['coordinate']
+    test_coor = stage_3[test_ip]
+    print(test_coor)
+    # err_dis += geopy.distance.geodesic(good_coor, test_coor).km
+# print(err_dis / len(ok_test_list))

@@ -20,7 +20,8 @@ def make_predict(
     ok_test_list,
     dict_clientserver_rtt,
     dict_client_region,
-    N_JOBS = 30
+    N_JOBS = 30,
+    loss = 'mse',
 ):
     # 制作数据
     def make_data_1(clients):
@@ -63,7 +64,7 @@ def make_predict(
     (train_data, train_label) = make_data_2(ok_train_list)
     (test_data, test_label) = make_data_2(ok_test_list)
 
-    rfc = RandomForestRegressor(n_estimators=300, n_jobs=N_JOBS)
+    rfc = RandomForestRegressor(n_estimators=300, n_jobs=N_JOBS, criterion=loss)
     rfc = rfc.fit(train_data, train_label)
     predict_coor = rfc.predict(test_data)
     dict_predict_coor = {}
