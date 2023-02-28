@@ -11,9 +11,9 @@ SRC_DIR = '../src'
 DST_DIR = './result'
 TASK_NUM = 30 * 2
 
-ok_server_dict = pickle.load(open(f'{SRC_DIR}/ok_server_dict.bin', 'rb'))
-ok_client_dict = pickle.load(open(f'{SRC_DIR}/ok_client_dict.bin', 'rb'))
-print('client: ', len(ok_client_dict))
+dict_server_info = pickle.load(open(f'{SRC_DIR}/dict_server_info.bin', 'rb'))
+dict_client_info = pickle.load(open(f'{SRC_DIR}/dict_client_info.bin', 'rb'))
+print('client: ', len(dict_client_info))
 
 os.system(f'mkdir -p {DST_DIR}')
 
@@ -116,8 +116,8 @@ api_func_list = [
 ]
 
 pairs = []
-for server_ip in ok_server_dict:
-    for client_ip in ok_client_dict:
+for server_ip in dict_server_info:
+    for client_ip in dict_client_info:
         pairs.append((server_ip, client_ip))
 random.shuffle(pairs)
 print(f'Number of pairs: {len(pairs)}')
@@ -126,8 +126,8 @@ TIME_REGREX = r'min(.?/)avg.?/max.*?=(.+?)ms'
 def request_one_pair(one_pair):
     server_ip, client_ip = one_pair
 
-    server_info = ok_server_dict[server_ip]
-    api_type  = ok_server_dict[server_ip]['api_type']
+    server_info = dict_server_info[server_ip]
+    api_type  = dict_server_info[server_ip]['api_type']
 
     req = None
     try:
