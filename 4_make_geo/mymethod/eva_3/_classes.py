@@ -77,8 +77,7 @@ CRITERIA_REG = {
     "mae": _criterion.MAE,
     "poisson": _criterion.Poisson,
     "latlon": _criterion.LatLonDis,
-    # "nvector": _criterion.NvectorDis,
-    "nvector2": _criterion.NvectorDis2,
+    "nvector": _criterion.NvectorDis,
 }
 
 DENSE_SPLITTERS = {"best": _splitter.BestSplitter, "random": _splitter.RandomSplitter}

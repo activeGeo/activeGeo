@@ -77,4 +77,3 @@ cdef class RegressionCriterion(Criterion):
     cdef double[::1] sum_total   # The sum of w*y.
     cdef double[::1] sum_left    # Same as above, but for the left side of the split
     cdef double[::1] sum_right   # Same as above, but for the right side of the split
-    cdef double[:, ::1] nvector   # Nvector!

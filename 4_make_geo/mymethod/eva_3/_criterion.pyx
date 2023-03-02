@@ -23,6 +23,7 @@ from libc.math cimport cos
 from libc.math cimport sqrt
 from libc.math cimport atan2
 from libc.math cimport acos
+from libc.math cimport asin
 from libc.math cimport M_PI
 from libc.math cimport isnan
 
@@ -641,8 +642,6 @@ cdef class RegressionCriterion(Criterion):
         self.sum_total = np.zeros(n_outputs, dtype=np.float64)
         self.sum_left = np.zeros(n_outputs, dtype=np.float64)
         self.sum_right = np.zeros(n_outputs, dtype=np.float64)
-
-        self.nvector = np.zeros((n_samples, 3), dtype=np.float64)
 
     def __reduce__(self):
         return (type(self), (self.n_outputs, self.n_samples), self.__getstate__())
@@ -1354,12 +1353,6 @@ cdef class Poisson(RegressionCriterion):
         return poisson_loss / (weight_sum * n_outputs)
 
 cdef class NvectorDis(RegressionCriterion):
-    cdef void convert_to_nv(self, double lat, double lon, double* nv) nogil:
-        cdef DOUBLE_t cos_lat = cos(lat)
-        nv[0] = cos_lat * cos(lon)
-        nv[1] = cos_lat * sin(lon)
-        nv[2] = sin(lat)
-
     cdef double compute_distance(self, double* n0, double* n1) nogil:
         cdef DOUBLE_t S = 0.0
         for i in range(3):
@@ -1375,11 +1368,6 @@ cdef class NvectorDis(RegressionCriterion):
 
         # Initialize fields
         self.y = y
-
-        for i in range(self.n_samples):
-            self.nvector[i, 0] = cos(self.y[i,0]) * cos(self.y[i,1])
-            self.nvector[i, 1] = cos(self.y[i,0]) * sin(self.y[i,1])
-            self.nvector[i, 2] = sin(self.y[i,0])
 
         self.sample_weight = sample_weight
         self.samples = samples
@@ -1425,9 +1413,8 @@ cdef class NvectorDis(RegressionCriterion):
         cdef DOUBLE_t lat
         cdef DOUBLE_t lon
 
-        lat = self.sum_total[0] / self.weighted_n_node_samples
-        lon = self.sum_total[1] / self.weighted_n_node_samples
-        self.convert_to_nv(lat, lon, m)
+        for j in range(3):
+            m[j] = self.sum_total[j] / self.weighted_n_node_samples
 
         for p in range(start, end):
             i = self.samples[p]
@@ -1436,7 +1423,7 @@ cdef class NvectorDis(RegressionCriterion):
 
             # 计算 Distance(yi - mean)
             for j in range(3):
-                y[j] = self.nvector[i, j]
+                y[j] = self.y[i, j]
 
             impurity += w * self.compute_distance(m, y)
         # printf("impurity: %f\n", impurity)
@@ -1455,13 +1442,10 @@ cdef class NvectorDis(RegressionCriterion):
         cdef double temp_impurity 
         cdef DOUBLE_t m[3]
         cdef DOUBLE_t y[3]
-        cdef DOUBLE_t lat
-        cdef DOUBLE_t lon
 
         # LEFT 的 平均坐标
-        lat = self.sum_left[0] / self.weighted_n_left
-        lon = self.sum_left[1] / self.weighted_n_left
-        self.convert_to_nv(lat, lon, m)
+        for j in range(3):
+            m[j] = self.sum_left[j] / self.weighted_n_left
 
         impurity = 0.0
         for p in range(start, pos):
@@ -1471,15 +1455,14 @@ cdef class NvectorDis(RegressionCriterion):
 
             # 计算 Distance(yi - mean)
             for j in range(3):
-                y[j] = self.nvector[i, j]
+                y[j] = self.y[i, j]
             impurity += w * self.compute_distance(m, y)
         impurity_left[0] = impurity / (self.weighted_n_left * self.n_outputs)
 
 
         # RIGHT 的 平均坐标
-        lat = self.sum_right[0] / self.weighted_n_right
-        lon = self.sum_right[1] / self.weighted_n_right
-        self.convert_to_nv(lat, lon, m)
+        for j in range(3):
+            m[j] = self.sum_right[j] / self.weighted_n_right
 
         impurity = 0.0
         for p in range(pos, end):
@@ -1489,31 +1472,25 @@ cdef class NvectorDis(RegressionCriterion):
 
             # 计算 Distance
             for j in range(3):
-                y[j] = self.nvector[i, j]
+                y[j] = self.y[i, j]
 
             impurity += w * self.compute_distance(m, y)
         impurity_right[0] = impurity / (self.weighted_n_right * self.n_outputs)
 
-cdef class NvectorDis2(RegressionCriterion):
+cdef class LatLonDis(RegressionCriterion):
 
-    cdef void convert_to_nv(self, double lat, double lon, double* nv) nogil:
-        lat = lat * M_PI / 180
-        lon = lon * M_PI / 180
-        cdef DOUBLE_t cos_lat = cos(lat)
-        nv[0] = cos_lat * cos(lon)
-        nv[1] = cos_lat * sin(lon)
-        nv[2] = sin(lat)
-
-    cdef double compute_distance(self, double* n0, double* n1) nogil:
-        # printf("(%f, %f, %f)\n", n0[0], n0[1], n0[2])
-        # printf("(%f, %f, %f)\n", n1[0], n1[1], n1[2])
-        cdef DOUBLE_t S = 0.0
-        for i in range(3):
-            S += n0[i] * n1[i]
-        if S > 1:
-            S = 1.0
-        # printf("%f\n", acos(S) * 6378)
-        return acos(S)
+    cdef double compute_distance(self, double* c0, double* c1) nogil:
+        cdef DOUBLE_t c00 = c0[0] * M_PI / 180
+        cdef DOUBLE_t c01 = c0[1] * M_PI / 180
+        cdef DOUBLE_t c10 = c1[0] * M_PI / 180
+        cdef DOUBLE_t c11 = c1[1] * M_PI / 180
+        cdef DOUBLE_t d0 = (c00 - c10) / 2
+        cdef DOUBLE_t d1 = (c01 - c11) / 2
+        cdef DOUBLE_t x = sin(d0) * sin(d0) 
+        cdef DOUBLE_t y = sin(d1) * sin(d1) * cos(c00) * cos(c10)
+        cdef DOUBLE_t S = asin(sqrt(x + y))
+        # printf("%f\n", 2*6378.137*S)
+        return S
 
     cdef double node_impurity(self) nogil:
         cdef SIZE_t pos = self.pos
@@ -1522,17 +1499,13 @@ cdef class NvectorDis2(RegressionCriterion):
 
         cdef SIZE_t i,j,p,k
         cdef DOUBLE_t w = 1.0
-
         cdef double impurity = 0.0
 
-        cdef DOUBLE_t m[3]
-        cdef DOUBLE_t y[3]
-        cdef DOUBLE_t lat
-        cdef DOUBLE_t lon
+        cdef DOUBLE_t y[2]
+        cdef DOUBLE_t m[2]
 
-        lat = self.sum_total[0] / self.weighted_n_node_samples
-        lon = self.sum_total[1] / self.weighted_n_node_samples
-        self.convert_to_nv(lat, lon, m)
+        m[0] = self.sum_total[0] / self.weighted_n_node_samples
+        m[1] = self.sum_total[1] / self.weighted_n_node_samples
 
         for p in range(start, end):
             i = self.samples[p]
@@ -1540,8 +1513,8 @@ cdef class NvectorDis2(RegressionCriterion):
                 w = self.sample_weight[i]
 
             # 计算 Distance(yi - mean)
-            for j in range(3):
-                y[j] = self.y[i, j+2]
+            y[0] = self.y[i, 0]
+            y[1] = self.y[i, 1]
             impurity += w * self.compute_distance(m, y)
         # printf("impurity: %f\n", impurity)
         return impurity / self.weighted_n_node_samples
@@ -1556,15 +1529,12 @@ cdef class NvectorDis2(RegressionCriterion):
         cdef DOUBLE_t w = 1.0
 
         cdef double impurity 
-        cdef DOUBLE_t m[3]
-        cdef DOUBLE_t y[3]
-        cdef DOUBLE_t lat
-        cdef DOUBLE_t lon
+        cdef DOUBLE_t m[2]
+        cdef DOUBLE_t y[2]
 
         # LEFT 的 平均坐标
-        lat = self.sum_left[0] / self.weighted_n_left
-        lon = self.sum_left[1] / self.weighted_n_left
-        self.convert_to_nv(lat, lon, m)
+        m[0] = self.sum_left[0] / self.weighted_n_left
+        m[1] = self.sum_left[1] / self.weighted_n_left
 
         impurity = 0.0
         for p in range(start, pos):
@@ -1573,16 +1543,14 @@ cdef class NvectorDis2(RegressionCriterion):
                 w = self.sample_weight[i]
 
             # 计算 Distance(yi - mean)
-            for j in range(3):
-                y[j] = self.y[i, j+2]
+            y[0] = self.y[i, 0]
+            y[1] = self.y[i, 1]
             impurity += w * self.compute_distance(m, y)
         impurity_left[0] = impurity / self.weighted_n_left
 
-
         # RIGHT 的 平均坐标
-        lat = self.sum_right[0] / self.weighted_n_right
-        lon = self.sum_right[1] / self.weighted_n_right
-        self.convert_to_nv(lat, lon, m)
+        m[0] = self.sum_right[0] / self.weighted_n_right
+        m[1] = self.sum_right[1] / self.weighted_n_right
 
         impurity = 0.0
         for p in range(pos, end):
@@ -1591,7 +1559,7 @@ cdef class NvectorDis2(RegressionCriterion):
                 w = self.sample_weight[i]
 
             # 计算 Distance(yi - mean)
-            for j in range(3):
-                y[j] = self.y[i, j+2]
+            y[0] = self.y[i, 0]
+            y[1] = self.y[i, 1]
             impurity += w * self.compute_distance(m, y)
         impurity_right[0] = impurity / self.weighted_n_right
