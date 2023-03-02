@@ -4,4 +4,4 @@ You should put these file into your the directory of the `sklearn` package. For 
 
 **NOTE: you should backup the original files!!!**
 
-After putting these files, run the command `bash test.sh`.
+After putting these files, run the command `python install.py`.
