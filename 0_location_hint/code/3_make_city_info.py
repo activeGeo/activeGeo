@@ -14,12 +14,14 @@ NAME_MIN_LEN = 4
 def format_name(name):
     return name.replace('-','').replace(' ','').lower()
 
+# if ascii, len should > NAME_MIN_LEN, else good
 def is_good_name(name):
     not_ascii_name = {x for x in name if ord(x) >= 128}
     if len(not_ascii_name) == 0:
         return len(name) >= NAME_MIN_LEN
-    else:
-        return all(u'\u4e00' < c < u'\u9fff' for c in not_ascii_name)
+    return True
+    # else:
+    #     return all(u'\u4e00' < c < u'\u9fff' for c in not_ascii_name)
 
 
 set_blackwords = pickle.load(open(f'{BIN_DIR}/set_blackwords.bin', 'rb'))
@@ -49,15 +51,16 @@ with open(CITY_FILE, newline='') as csvfile:
         if admin_code.lower() in dict_admin_by_country[country_code]:
             admin_name = dict_admin_by_country[country_code][admin_code.lower()]
 
-        set_name = set()
         # append city_name, ascii_name, alter_name
+        set_name = set()
         if row[1] != '': set_name.add(format_name(row[1]))
         if row[2] != '': set_name.add(format_name(row[2]))
-        if row[3] != '': set_name.update([format_name(x) for x in row[3].split(',')])
+        set_alter_name = set()
+        if row[3] != '': 
+            set_alter_name.update([format_name(x) for x in row[3].split(',')])
 
-        set_name = set_name - set_blackwords
-        # 长度少于 3 的名字去掉，否则容易出错
-
+        set_name.update(set_alter_name)
+        set_name.difference(set_blackwords)
         set_name = {x for x in set_name if is_good_name(x)}
 
         for name in set_name:
@@ -65,14 +68,20 @@ with open(CITY_FILE, newline='') as csvfile:
             # add to country
             if name not in dict_city_by_country[country_code]:
                 dict_city_by_country[country_code][name] = this_city_info
-            elif population > dict_city_by_country[country_code][name][-1]:
-                dict_city_by_country[country_code][name] = this_city_info
+            else:
+                is_bigger = (population > dict_city_by_country[country_code][name][-1])
+                is_alter = (name in set_alter_name)
+                if is_bigger and (not is_alter):
+                    dict_city_by_country[country_code][name] = this_city_info
 
             # add to city name
             if name not in dict_city_by_name:
                 dict_city_by_name[name] = this_city_info
-            elif population > dict_city_by_name[name][-1]:
-                dict_city_by_name[name] = this_city_info
+            else:
+                is_bigger = (population > dict_city_by_name[name][-1])
+                is_alter = (name in set_alter_name)
+                if is_bigger and (not is_alter):
+                    dict_city_by_name[name] = this_city_info
 
 # 按照人口排序
 # for name in dict_city_by_name:

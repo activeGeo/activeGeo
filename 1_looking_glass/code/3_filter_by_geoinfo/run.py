@@ -23,10 +23,6 @@ list_tbd_routers = []
 def split_word(name):
     name_split = set()
 
-    # remove digits
-    table = str.maketrans('', '', digits)
-    name = name.translate(table).lower()
-
     # check format 'xx, yy'
     if name.count(',') > 0 and '(' not in name:
         # 对于 '-' 字符, 有两种选择, 一个是删掉, 一个是替换为 ','
@@ -52,6 +48,10 @@ def split_word(name):
 
 def check_raw_word(raw_word, iata_code=True):
     raw_word = raw_word.lower()
+    # remove digits
+    table = str.maketrans('', '', digits)
+    raw_word = raw_word.translate(table).lower()
+
 
     # 检查是否有带有空格的城市
     for name in dict_hasspace_city:

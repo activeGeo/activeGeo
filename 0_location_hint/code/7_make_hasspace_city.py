@@ -28,7 +28,7 @@ with open(CITY_FILE, newline='') as csvfile:
         if row[3] != '': set_name.update([x.lower() for x in row[3].split(',')])
 
         for name in set_name:
-            if ' ' in name:
+            if ' ' in name and name.isascii():
                 good_name = name.replace('-', '').replace(' ', '')
                 if good_name in dict_city_by_name:
                     dict_hasspace_city[name] = dict_city_by_name[good_name]
